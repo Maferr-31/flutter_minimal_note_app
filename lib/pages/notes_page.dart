@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_minimal_note_app/components/drawer.dart';
+import 'package:flutter_minimal_note_app/components/note_tile.dart';
 import 'package:flutter_minimal_note_app/main.dart';
 import 'package:flutter_minimal_note_app/models/note.dart';
 import 'package:flutter_minimal_note_app/models/note_database.dart';
@@ -30,6 +32,8 @@ void createNote() {
   showDialog(
     context: context, 
     builder: (context) => AlertDialog(
+      // ignore: deprecated_member_use
+      backgroundColor: Theme.of(context).colorScheme.background,
       content: TextField(
         controller: textController,
       ),
@@ -64,7 +68,9 @@ void updateNote(Note note) {
   showDialog(
     context: context, 
     builder: (context) => AlertDialog(
-      title: Text("Descargar Nota"),
+      // ignore: deprecated_member_use
+      backgroundColor: Theme.of(context).colorScheme.background,
+      title: const Text("Descargar Nota"),
       content: TextField(controller: textController),
       actions: [
         //boton de descarga
@@ -104,17 +110,32 @@ void deleteNote(int id) {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
+      // ignore: deprecated_member_use
+      backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+        onPressed: createNote,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: Icon(
+          Icons.add, 
+          color: Theme.of(context).colorScheme.inversePrimary,
+        ),
       ),
+      drawer: const MyDrawer(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //Heading
           Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Text('Notes',style: GoogleFonts.dmSeriText(fontSize: 48),),
+            padding: const EdgeInsets.only(left: 25.0),
+            child: Text(
+              'Notes',
+              style: GoogleFonts.dmSerifText(
+                fontSize: 48,
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
+            ),
           ),
           //lista de notas
           Expanded(
@@ -125,24 +146,10 @@ void deleteNote(int id) {
                 final note = currentNotes[index];
             
                 //lista de interfaz de usuario
-                return ListTile(
-                  title: Text(note.text),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                     // boton editar
-                     IconButton(
-                      onPressed: () => updateNote(note), 
-                      icon: const Icon(Icons.edit),
-                      ),
-                     
-                     //boton borrar
-                     IconButton(
-                      onPressed:() => updateNote(note), 
-                      icon: const Icon(Icons.delete),
-                     ),
-                    ],
-                  ),
+                return NoteTile(
+                  text: note.text,
+                  onEditPressed: () => updateNote(note),
+                  onDeletePressed: () => deleteNote(note.id),
                 );
               },
             ),
