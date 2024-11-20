@@ -26,19 +26,20 @@ class NoteTile extends StatelessWidget {
       ),
       child: ListTile(
         title: Text(text),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              onPressed: onEditPressed, 
-              icon:const Icon(Icons.edit),
-            ),
-
-            IconButton(
-              onPressed: onDeletePressed, 
-              icon:const Icon(Icons.delete),
-            )
-          ],
+        trailing: Builder(
+          builder: (context) => IconButton(
+          icon: const Icon(Icons.more_vert),
+          onPressed: () => showPopover(
+            width: 100,
+            height: 100,
+            backgroundColor: Theme.of(context).colorScheme.background,
+            context:context,
+            bodyBuilder: (context) => NoteSettings(
+              onEditTap: onEditPressed,
+              onDeleteTap: onDeletePressed,
+           ),
+          ),
+         ),
         ),
       ),
     );
