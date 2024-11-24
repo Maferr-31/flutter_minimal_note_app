@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_minimal_note_app/components/note_settings.dart';
+import 'package:popover/popover.dart';
 
 class NoteTile extends StatelessWidget {
   final String text;
@@ -12,7 +14,7 @@ class NoteTile extends StatelessWidget {
     required this.onDeletePressed,
   });
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(

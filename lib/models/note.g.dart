@@ -15,7 +15,6 @@ const NoteSchema = CollectionSchema(
       type: IsarType.string,
     )
   },
-  estimateSize: _noteEstimateSize, 
   serialize: _noteSerialize, 
   deserialize: _noteDeserialize, 
   deserializeProp: _noteDeserializeProp, 

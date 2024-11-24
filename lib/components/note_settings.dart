@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NoteSettings extends StatelessWidget {
-  const NoteSettings({super.key});
+  final void Function()? onEditTap;
+  final void Function ()? onDeleteTap;
+  const NoteSettings({super.key, required this.onDeleteTap, required this.onEditTap});
 
   @override
   Widget build(BuildContext context) {
