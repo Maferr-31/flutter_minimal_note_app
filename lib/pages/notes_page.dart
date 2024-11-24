@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_minimal_note_app/components/drawer.dart';
 import 'package:flutter_minimal_note_app/components/note_tile.dart';
-import 'package:flutter_minimal_note_app/main.dart';
 import 'package:flutter_minimal_note_app/models/note.dart';
 import 'package:flutter_minimal_note_app/models/note_database.dart';
 import 'package:google_fonts/google_fonts.dart';

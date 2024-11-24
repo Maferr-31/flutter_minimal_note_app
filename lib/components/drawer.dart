@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_minimal_note_app/components/drawer_tile.dart';
 import 'package:flutter_minimal_note_app/pages/settings_page.dart';
 
@@ -9,6 +8,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      // ignore: deprecated_member_use
       backgroundColor: Theme.of(context).colorScheme.background,
       child: Column(
         children: [
@@ -35,7 +35,7 @@ class MyDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SettingsPage(),
+                  builder: (context) => const SettingsPage(),
                 ),
               );
             },
