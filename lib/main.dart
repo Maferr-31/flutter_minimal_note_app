@@ -37,11 +37,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
       // Retorna un `MaterialApp`
     return MaterialApp(
-   // Oculta el banner de depuración que aparece en la esquina superior derecha durante el desarrollo.   
       debugShowCheckedModeBanner: false,
-    // Establece la pantalla inicial de la aplicación. En este caso, `NotesPage`.  
       home: const NotesPage(),
-    // Se obtiene el tema desde el `ThemeProvider`
       theme: Provider.of<ThemeProvider>(context).themeData, // problem
     );
   }
